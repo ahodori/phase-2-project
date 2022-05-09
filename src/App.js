@@ -10,7 +10,7 @@ import Header from './Header';
 function App() {
   return (
     <div className="App">
-      
+      <Header/>
       <Routes>
         <Route path="/" element={<Calendar/>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
