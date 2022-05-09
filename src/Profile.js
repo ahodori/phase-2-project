@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MiniCalendar from './MiniCalendar';
 import EditProfile from './EditProfile';
 
-function Profile () {
+function Profile ( { user }) {
 
 const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
 
@@ -14,11 +14,11 @@ function handleEdit() {
 return (
     <div>
         <div className="profilecard">
-            <h2>John Smith</h2>
-            <img alt="happy man" width="200" height="200" src="https://image.shutterstock.com/shutterstock/photos/190821629/display_1500/stock-photo-happy-man-with-white-teeth-smiling-with-thumbs-up-isolated-on-a-white-background-190821629.jpg"></img>
-            <h4>Bio</h4>
-            <p>Hey my name is John and I like pretty much all types of music, I'm very cool</p>
-            <h4>Fav Genre: Guitar</h4>
+            <h2>{user.username}</h2>
+            <img alt="happy man" width="200" height="200" src={user.image}></img>
+            <h4>Bio: </h4>
+            <p>{user.bio}</p>
+            <h4>Fav Genre: {user.favgenre}</h4>
             <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
             {isProfileEditFormVisible ? <EditProfile /> : <></>}
         </div>
