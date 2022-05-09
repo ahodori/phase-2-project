@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MiniCalendar from './MiniCalendar';
+import EditProfile from './EditProfile';
 
 function Profile () {
 
+const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
 
+function handleEdit() {
+    setProfileEditFormVisible(isProfileEditFormVisible => !isProfileEditFormVisible)
+}
 
 
 return (
@@ -14,7 +19,8 @@ return (
             <h4>Bio</h4>
             <p>Hey my name is John and I like pretty much all types of music, I'm very cool</p>
             <h4>Fav Genre: Guitar</h4>
-            <button>Edit Profile</button>
+            <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
+            {isProfileEditFormVisible ? <EditProfile /> : <></>}
         </div>
         <div>
             <h2>Top 5 Albums</h2>
