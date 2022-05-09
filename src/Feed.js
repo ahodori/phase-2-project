@@ -1,4 +1,5 @@
 import react from './react'
+import AlbumCard from './AlbumCard'
 
 function Feed() {
 
@@ -17,7 +18,7 @@ function Feed() {
             </div>
             <div>
                 <ul>
-                <li>single album goes here</li>
+                <li><AlbumCard /></li>
                 </ul>
             </div>
         </div>
