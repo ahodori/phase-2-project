@@ -6,11 +6,13 @@ import Calendar from './Calendar';
 import Profile from './Profile';
 import Feed from './Feed';
 import Header from './Header';
+import AddForm from "./AddForm";
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <AddForm/>
       <Routes>
         <Route path="/" element={<Calendar/>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
