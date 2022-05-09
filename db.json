@@ -1,0 +1,43 @@
+{
+    "user": {
+        "username": "johnsmith1337",
+        "bio": "Hey my name is John and I like pretty much all types of music, I'm very cool",
+        "image": "https://image.shutterstock.com/shutterstock/photos/190821629/display_1500/stock-photo-happy-man-with-white-teeth-smiling-with-thumbs-up-isolated-on-a-white-background-190821629.jpg",
+        "favgenre": "Guitar"
+    },
+    "albumEntries": [
+        {
+            "title": "Discovery",
+            "artist": "Daft Punk",
+            "dateAdded": "2022-05-09",
+            "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png",
+            "rating": 10,
+            "comments": []
+        },
+        {
+            "title": "Flood",
+            "artist": "Boris",
+            "dateAdded": "2022-05-07",
+            "image": "https://upload.wikimedia.org/wikipedia/en/a/af/Boris_flood.jpg",
+            "rating": 10,
+            "comments": []
+        },
+        {
+            "title": "Kidz Bop 16",
+            "artist": "KIDZ BOP",
+            "dateAdded": "2022-05-13",
+            "image": "https://m.media-amazon.com/images/I/61cNWcmEOHL._SX425_.jpg",
+            "rating": 10,
+            "comments": [
+                {
+                    "username": "johnsmith1337",
+                    "comment": "This. Album. Rules!!!!"
+                },
+                {
+                    "username": "janedoe2022",
+                    "comment": "this is the greatest day of my life"
+                }
+            ]
+        }
+    ]
+}
