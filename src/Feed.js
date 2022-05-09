@@ -2,7 +2,19 @@ import React from 'react'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
-function Feed({albumEntries = []}) {
+function Feed({albumEntries}) {
+
+    const singleAlbum = albumEntries.map((albumEntry) => (
+        <AlbumCard 
+            key={albumEntry.id}
+            title={albumEntry.title}
+            artist={albumEntry.artist}
+            dateAdded={albumEntry.dateAdded}
+            image={albumEntry.image}
+            rating={albumEntry.rating}
+            comments={albumEntry.comments}
+            />
+    ))
 
     return (
         <div>
@@ -12,16 +24,7 @@ function Feed({albumEntries = []}) {
             </div>
             <div>
                 <ul className="albumfeedlist">
-                    {albumEntries.map((albumEntry) => {
-                        <AlbumCard key={albumEntry.id}
-                                   title={albumEntry.title}
-                                   artist={albumEntry.artist}
-                                   dateAdded={albumEntry.dateAdded}
-                                   image={albumEntry.image}
-                                   rating={albumEntry.rating}
-                                   comments={albumEntry.comments}
-                                   />
-                    })}
+                    {singleAlbum}
                 </ul>
             </div>
         </div>

@@ -14,7 +14,7 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments}) {
             <p>Added {dateAdded}</p>
             <p>Rating: {rating}/10</p>
             {comments.map((comment) => {
-                <p><span>{comment.username}: </span>{comment.comment}</p>
+                return(<p><span>{comment.username}: </span>{comment.comment}</p>)
             })}
         </div>
     )
