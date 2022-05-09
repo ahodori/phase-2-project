@@ -11,11 +11,18 @@ import AddForm from "./AddForm";
 function App() {
   const [isAddFormVisible, setAddFormVisible] = useState(true);
   const [albumEntries, setAlbumEntries] = useState([]);
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     fetch('http://localhost:3000/albumEntries')
       .then(res => res.json())
       .then(albums => setAlbumEntries(albums))
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/user')
+      .then(res => res.json())
+      .then(user => setUser(user))
   }, [])
 
   return (
@@ -24,7 +31,7 @@ function App() {
       {isAddFormVisible ? <AddForm/> : <></>}
       <Routes>
         <Route path="/" element={<Calendar/>}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/profile" element={<Profile user={user}/>}></Route>
         <Route path="/feed" element={<Feed albumEntries={albumEntries}/>}></Route>
       </Routes>
 
