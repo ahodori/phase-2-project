@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Route, Routes } from "react-router-dom";
 
 import './App.css';
@@ -9,10 +9,12 @@ import Header from './Header';
 import AddForm from "./AddForm";
 
 function App() {
+  const [isAddFormVisible, setAddFormVisible] = useState(true);
+
   return (
     <div className="App">
       <Header/>
-      <AddForm/>
+      {isAddFormVisible ? <AddForm/> : <></>}
       <Routes>
         <Route path="/" element={<Calendar/>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
