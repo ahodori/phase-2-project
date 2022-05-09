@@ -1,5 +1,5 @@
-import react from './react'
-import AlbumCard from './AlbumCard'
+import React from 'react';
+import AlbumCard from './AlbumCard';
 
 function Feed() {
 
