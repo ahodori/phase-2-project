@@ -7,6 +7,7 @@
     },
     "albumEntries": [
         {
+            "id": 1,
             "title": "Discovery",
             "artist": "Daft Punk",
             "dateAdded": "2022-05-09",
@@ -15,6 +16,7 @@
             "comments": []
         },
         {
+            "id": 2,
             "title": "Flood",
             "artist": "Boris",
             "dateAdded": "2022-05-07",
@@ -23,6 +25,7 @@
             "comments": []
         },
         {
+            "id": 3,
             "title": "Kidz Bop 16",
             "artist": "KIDZ BOP",
             "dateAdded": "2022-05-13",
