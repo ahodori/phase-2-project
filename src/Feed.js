@@ -1,5 +1,6 @@
 import React from 'react'
 import AlbumCard from './AlbumCard'
+import Search from './Search'
 
 function Feed() {
 
@@ -13,11 +14,11 @@ function Feed() {
     return (
         <div>
             <div>
-                <h1>Album List</h1>
-                <button>Search Bar</button>
+                <h1>Your Music</h1>
+                <Search />
             </div>
             <div>
-                <ul>
+                <ul className="albumfeedlist">
                 <li><AlbumCard /></li>
                 </ul>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import MiniCalendar from './MiniCalendar';
 
 function Profile () {
 
@@ -21,7 +22,7 @@ return (
                 <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png"></img>
             </div>
             <div>
-                <p>Where calendar div will go</p>
+                <p><MiniCalendar /></p>
             </div>
         </div>
     </div>

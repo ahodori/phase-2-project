@@ -16,3 +16,22 @@ code {
   border-style: double;
   display: block;
 }
+
+.logo {
+  height: 20px;
+  width: 20px;
+}
+
+.header {
+  display: grid;
+}
+
+.nav {
+  display: grid;
+  align-content: center;
+  padding-top: 20px;
+}
+
+.albumfeedlist{
+  list-style-type: none;
+}
