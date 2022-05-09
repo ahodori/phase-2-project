@@ -1,9 +1,11 @@
 import './App.css';
-import Profile from './Profile'
+import Calendar from './Calendar';
+
 
 function App() {
   return (
     <div className="App">
+      <Calendar/>
       <Profile />
       <Feed />
     </div>
