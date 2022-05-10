@@ -10,7 +10,7 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments}) {
         <div>
             <h1>{title}</h1>
             <h2>{artist}</h2>
-            <img src={image} alt="album list item"></img>
+            <img src={image} alt="album list item" class="feedcardimg"></img>
             <p>Added {dateAdded}</p>
             <p>Rating: {rating}/10</p>
             {comments.map((comment) => {

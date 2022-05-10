@@ -25,10 +25,15 @@ function App() {
       .then(user => setUser(user))
   }, [])
 
+
+  const handleNewAlbum = (newAlbum) => {
+    setAlbumEntries([...albumEntries, newAlbum])
+  }
+
   return (
     <div className="App">
       <Header/>
-      {isAddFormVisible ? <AddForm/> : <></>}
+      {isAddFormVisible ? <AddForm handleNewAlbum={handleNewAlbum} user={user}/> : <></>}
       <Routes>
         <Route path="/" element={<Calendar/>}></Route>
         <Route path="/profile" element={<Profile user={user}/>}></Route>
