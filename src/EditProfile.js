@@ -57,7 +57,7 @@ function EditProfile( { user, onUpdatedProfile } ) {
 
     return (
         <div>
-            <form onSubmit={handleChange}>
+            <form onSubmit={handleChange} className="profileedit">
                 <label>Name: </label><input type="text" name="name" onChange={handleName} value={userName}></input>
                 <label>Image: </label><input type="text" name="image" onChange={handleImage} value={image}></input>
                 <label>Bio: </label><input type="text" name="bio" onChange={handleBio} value={bio}></input>

@@ -2,7 +2,7 @@ import React from 'react'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
-function Feed({albumEntries, filteredDeletedAlbum}) {
+function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, search }) {
 
     const singleAlbum = albumEntries.map((albumEntry) => (
         <AlbumCard 
@@ -22,7 +22,7 @@ function Feed({albumEntries, filteredDeletedAlbum}) {
         <div>
             <div>
                 <h1>Your Music</h1>
-                <Search />
+                <Search handleSearch={handleSearch} search={search} />
             </div>
             <div>
                 <ul className="albumfeedlist">
