@@ -41,28 +41,6 @@
           "comment": "this is the greatest day of my life"
         }
       ]
-    },
-    {
-      "title": "Cats in Jazz",
-      "artist": "Cats",
-      "dateAdded": "2022-05-12",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
-      "comments": [],
-      "id": 4
-    },
-    {
-      "title": "Yellow Lab",
-      "artist": "Woof Woof",
-      "dateAdded": "2022-05-27",
-      "image": "https://images.squarespace-cdn.com/content/v1/5c906fe6fd67934053127009/1559101261532-KXOAQWM6HUEBLVB32K9Z/homepage_lab.jpg",
-      "rating": "14",
-      "comments": [
-        {
-          "username": "johnsmith1337",
-          "comment": "Big woof for a big pup, great beat"
-        }
-      ],
-      "id": 5
     }
   ]
 }
