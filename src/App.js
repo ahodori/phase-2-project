@@ -30,7 +30,7 @@ function App() {
       <Header/>
       {isAddFormVisible ? <AddForm/> : <></>}
       <Routes>
-        <Route path="/" element={<Calendar/>}></Route>
+        <Route path="/" element={<Calendar albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user}/>}></Route>
         <Route path="/feed" element={<Feed albumEntries={albumEntries}/>}></Route>
       </Routes>
