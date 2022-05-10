@@ -12,7 +12,8 @@ function Profile ( { user, albumEntries}) {
     }
 
     function displayTop5Albums(username) {
-        let submittedAlbums = albumEntries.filter((albumEntry) => albumEntry.userAdded === username);
+        let submittedAlbums = albumEntries.filter((albumEntry) => albumEntry.userAdded === username)
+                                          .sort((a, b) => a.dateAdded < b.dateAdded ? 1 : -1);
         if (submittedAlbums.length > 5) {
             submittedAlbums = submittedAlbums.slice(-5);
         }
