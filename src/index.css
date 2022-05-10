@@ -40,3 +40,10 @@ code {
   width: 200px;
   height: auto;
 }
+
+.albumcarddelete {
+  font-size: 10px;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+}

@@ -30,6 +30,10 @@ function App() {
     setAlbumEntries([...albumEntries, newAlbum])
   }
 
+  const filteredDeletedAlbum = (id) => {
+    setAlbumEntries(albumEntries.filter(albumEntry => albumEntry.id !== id))
+  }
+
   return (
     <div className="App">
       <Header/>
@@ -37,7 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calendar albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user}/>}></Route>
-        <Route path="/feed" element={<Feed albumEntries={albumEntries}/>}></Route>
+        <Route path="/feed" element={<Feed albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 
     </div>

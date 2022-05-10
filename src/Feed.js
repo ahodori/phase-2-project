@@ -2,17 +2,19 @@ import React from 'react'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
-function Feed({albumEntries}) {
+function Feed({albumEntries, filteredDeletedAlbum}) {
 
     const singleAlbum = albumEntries.map((albumEntry) => (
         <AlbumCard 
             key={albumEntry.id}
+            id={albumEntry.id}
             title={albumEntry.title}
             artist={albumEntry.artist}
             dateAdded={albumEntry.dateAdded}
             image={albumEntry.image}
             rating={albumEntry.rating}
             comments={albumEntry.comments}
+            filteredDeletedAlbum={filteredDeletedAlbum}
             />
     ))
 
