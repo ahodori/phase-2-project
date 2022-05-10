@@ -20,7 +20,7 @@ return (
             <p>{user.bio}</p>
             <h4>Fav Genre: {user.favgenre}</h4>
             <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
-            {isProfileEditFormVisible ? <EditProfile /> : <></>}
+            {isProfileEditFormVisible ? <EditProfile user={user}/> : <></>}
         </div>
         <div>
             <h2>Top 5 Albums</h2>
