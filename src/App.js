@@ -44,7 +44,7 @@ function App() {
       {isAddFormVisible ? <AddForm handleNewAlbum={handleNewAlbum} user={user}/> : <></>}
       <Routes>
         <Route path="/" element={<Calendar albumEntries={albumEntries}/>}></Route>
-        <Route path="/profile" element={<Profile user={user}/>}></Route>
+        <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries}/>}></Route>
         <Route path="/feed" element={<Feed albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 
