@@ -40,8 +40,13 @@ function Calendar({albumEntries}) {
         setDisplayAlbumCard(true);
     }
 
+    function handleDecrementMonth(e) {
 
+    }
 
+    function handleIncrementMonth(e) {
+        
+    }
 
     function renderDate(month, day) {
         const lastDayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -86,6 +91,11 @@ function Calendar({albumEntries}) {
 
 
     return (<>
+                <div>
+                    <button onClick={handleDecrementMonth}>&lt;--</button>
+                    {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][displayedMonth]}
+                    <button onClick={handleIncrementMonth}>--&gt;</button>
+                </div>
                 <div className="container">
                     {renderCalendarWeek(calendarStart)}
                     {renderCalendarWeek(calendarStart+7)}
