@@ -13,26 +13,29 @@ function Calendar() {
     firstOfMonth.setDate(1);
     console.log(firstOfMonth);
 
-    const calendarStart = firstOfMonth.getDate() - firstOfMonth.getDay()
+    const calendarStart = firstOfMonth.getDate() - firstOfMonth.getDay() //start calendar on earliest Sunday, even if that's in last month
 
-    //0 6       start at firstOfMonth.getDate() - firstOfMonth.getDay()
-    //7 14
-    //15 22
-    //23 30
-    //30 31
+    function renderDate(month, day) {
+        const lastDayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (day > 0 && day <= lastDayOfMonth[month]) {
+            return `${month+1}/${day}`;
+        }
+        return <></>;
+    }
 
     function CalendarWeek(firstDate) {
-        const month = currentDate.getMonth()+1;
+        const month = currentDate.getMonth();
     
         return (
         <div class="row">
-            <div class="col">Sun {(firstDate > 0 && firstDate < 31) ? `${month}/${firstDate}` : <></>}</div>
-            <div class="col">Mon {(firstDate+1 > 0 && firstDate+1 < 31) ? `${month}/${firstDate+1}` : <></>}</div>
-            <div class="col">Tue {(firstDate+2 > 0 && firstDate+2 < 31) ? `${month}/${firstDate+2}` : <></>}</div>
-            <div class="col">Wed {(firstDate+3 > 0 && firstDate+3 < 31) ? `${month}/${firstDate+3}` : <></>}</div>
-            <div class="col">Thu {(firstDate+4 > 0 && firstDate+4 < 31) ? `${month}/${firstDate+4}` : <></>}</div>
-            <div class="col">Fri {(firstDate+5 > 0 && firstDate+5 < 31) ? `${month}/${firstDate+5}` : <></>}</div>
-            <div class="col">Sat {(firstDate+6 > 0 && firstDate+6 < 31) ? `${month}/${firstDate+6}` : <></>}</div>
+            <div class="col">Sun {renderDate(month, firstDate)}</div>
+            <div class="col">Mon {renderDate(month, firstDate+1)}</div>
+            <div class="col">Tue {renderDate(month, firstDate+2)}</div>
+            <div class="col">Wed {renderDate(month, firstDate+3)}</div>
+            <div class="col">Thu {renderDate(month, firstDate+4)}</div>
+            <div class="col">Fri {renderDate(month, firstDate+5)}</div>
+            <div class="col">Sat {renderDate(month, firstDate+6)}</div>
         </div>
         )
     }
