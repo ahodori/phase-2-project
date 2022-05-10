@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import MiniCalendar from './MiniCalendar';
+import Calendar from './Calendar';
 import EditProfile from './EditProfile';
 
-function Profile ( { user }) {
+function Profile ( { user, albumEntries}) {
 
 const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
 
@@ -28,7 +29,7 @@ return (
                 <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png"></img>
             </div>
             <div>
-                <p><MiniCalendar /></p>
+                <p><Calendar albumEntries={albumEntries}/></p>
             </div>
         </div>
     </div>
