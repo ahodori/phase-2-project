@@ -63,25 +63,32 @@ function Calendar({albumEntries}) {
     function renderDate(month, day) {
         const lastDayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        if (day > 0 && day <= lastDayOfMonth[month]) {
-            return `${month+1}/${day}`;
-        }
-        return <></>;
-    }
-
-    function renderAlbumCards(day) {
         const dispMonth = displayedMonth+1<10 ? `0${displayedMonth+1}` : `${displayedMonth+1}`;
         const dispDay   = day<10   ? `0${day}`   : `${day}`;
         const todaysEntries = albumEntries.filter((albumEntry) => albumEntry.dateAdded === `${displayedYear}-${dispMonth}-${dispDay}`);
-        //console.log(todaysEntries);
+
+        let datePart = <></>;
+        let entriesPart = <p>-</p>;
+        let stylePart = {"font-weight": "bold"};
+
+        if (day > 0 && day <= lastDayOfMonth[month]) {
+            datePart = `${month+1}/${day}`;
+        }
 
         if (todaysEntries.length > 0) {
-            return todaysEntries.map((entry) => {
+            entriesPart = todaysEntries.map((entry) => {
                 return <p onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
             });
         }
 
-        return <p>-</p>;
+        return <><span style={stylePart}>{datePart}</span> {entriesPart}</>
+    }
+
+    function renderAlbumCards(day) {
+
+        //console.log(todaysEntries);
+
+        
     }
 
     function renderCalendarWeek(firstDate) {   
@@ -103,10 +110,18 @@ function Calendar({albumEntries}) {
 
 
     return (<>
-                <div>
-                    <button onClick={handleDecrementMonth}>&lt;--</button>
-                    {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][displayedMonth]} {displayedYear}
-                    <button onClick={handleIncrementMonth}>--&gt;</button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <button onClick={handleDecrementMonth}>&lt;--</button>
+                        </div>
+                        <div className="col">
+                            {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][displayedMonth]} {displayedYear}
+                        </div>
+                        <div className="col">
+                            <button onClick={handleIncrementMonth}>--&gt;</button>
+                        </div>
+                    </div>
                 </div>
                 <div className="container">
                     {renderCalendarWeek(calendarStart)}
