@@ -13,6 +13,7 @@ function Calendar({albumEntries}) {
     const [calendarStart, setCalendarStart] = useState(1);
 
     const currentDate = new Date();
+    const lastDayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     useEffect(() => {
         setDisplayedMonth(currentDate.getMonth());
@@ -61,7 +62,7 @@ function Calendar({albumEntries}) {
     }
 
     function renderDate(month, day) {
-        const lastDayOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 
         const dispMonth = displayedMonth+1<10 ? `0${displayedMonth+1}` : `${displayedMonth+1}`;
         const dispDay   = day<10   ? `0${day}`   : `${day}`;
@@ -129,7 +130,7 @@ function Calendar({albumEntries}) {
                     {renderCalendarWeek(calendarStart+14)}
                     {renderCalendarWeek(calendarStart+21)}
                     {renderCalendarWeek(calendarStart+28)}
-                    {renderCalendarWeek(calendarStart+35)}
+                    {calendarStart+35 <= lastDayOfMonth[displayedMonth] ? renderCalendarWeek(calendarStart+35) : <></>}
                 </div>
                 
                 <div>
