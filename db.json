@@ -11,6 +11,7 @@
       "title": "Discovery",
       "artist": "Daft Punk",
       "dateAdded": "2022-05-09",
+      "userAdded": "johnsmith1337",
       "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png",
       "rating": 10,
       "comments": []
@@ -20,6 +21,7 @@
       "title": "Flood",
       "artist": "Boris",
       "dateAdded": "2022-05-07",
+      "userAdded": "johnsmith1337",
       "image": "https://upload.wikimedia.org/wikipedia/en/a/af/Boris_flood.jpg",
       "rating": 10,
       "comments": []
@@ -29,6 +31,7 @@
       "title": "Kidz Bop 16",
       "artist": "KIDZ BOP",
       "dateAdded": "2022-05-13",
+      "userAdded": "johnsmith1337",
       "image": "https://m.media-amazon.com/images/I/61cNWcmEOHL._SX425_.jpg",
       "rating": 10,
       "comments": [
