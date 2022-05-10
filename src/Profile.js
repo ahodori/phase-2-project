@@ -34,7 +34,7 @@ function Profile ( { user, albumEntries}) {
                 {isProfileEditFormVisible ? <EditProfile /> : <></>}
             </div>
             <div>
-                <h2>Top 5 Albums</h2>
+                <h2>Most Recent 5 Albums</h2>
                 <div>
                     {displayTop5Albums(user.username)}
                 </div>
