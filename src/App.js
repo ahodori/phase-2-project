@@ -34,6 +34,10 @@ function App() {
     setAlbumEntries(albumEntries.filter(albumEntry => albumEntry.id !== id))
   }
 
+  const onUpdatedProfile = (updatedProfile) => {
+    const newUpdatedProfile = user
+  }
+
   return (
     <div className="App">
       <Header/>

@@ -17,13 +17,10 @@ function Profile ( { user, albumEntries}) {
         if (submittedAlbums.length > 5) {
             submittedAlbums = submittedAlbums.slice(-5);
         }
-
-        return submittedAlbums.map((album) => {
+      return submittedAlbums.map((album) => {
             return <img src={album.image} style={{height:200}}></img>
         })
-    }
 
-    return (
         <div>
             <div className="profilecard">
                 <h2>{user.username}</h2>
