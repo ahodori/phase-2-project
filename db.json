@@ -1,9 +1,10 @@
 {
   "user": {
-    "username": "johnsmith1337",
-    "bio": "Hey my name is John and I like pretty much all types of music, I'm very cool",
-    "image": "https://image.shutterstock.com/shutterstock/photos/190821629/display_1500/stock-photo-happy-man-with-white-teeth-smiling-with-thumbs-up-isolated-on-a-white-background-190821629.jpg",
-    "favgenre": "Guitar"
+    "username": "Todd",
+    "bio": "Everyone says I look like Tom Holland, but I'm not. ",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Tom_Holland_by_Gage_Skidmore.jpg/406px-Tom_Holland_by_Gage_Skidmore.jpg",
+    "favgenre": "Spiderman soundtrack",
+    "name": "Bill"
   },
   "albumEntries": [
     {
