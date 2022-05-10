@@ -30,7 +30,7 @@ function Profile ( { user, albumEntries, onUpdatedProfile }) {
                 <p>{user.bio}</p>
                 <h4>Fav Genre: {user.favgenre}</h4>
                 <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
-                {isProfileEditFormVisible ? <EditProfile user={user} onUpdatedProfile={onUpdatedProfile} /> : <></>}
+                {isProfileEditFormVisible ? <EditProfile user={user} onUpdatedProfile={(updatedProfile) => {setProfileEditFormVisible(false); return onUpdatedProfile(updatedProfile);}} /> : <></>}
             </div>
             <div>
                 <h2>Most Recent 5 Albums</h2>
