@@ -29,7 +29,7 @@ return (
                 <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png"></img>
             </div>
             <div>
-                <p><Calendar albumEntries={albumEntries}/></p>
+                <Calendar albumEntries={albumEntries}/>
             </div>
         </div>
     </div>
