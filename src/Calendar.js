@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AlbumCard from "./AlbumCard";
 
 
 
 
 function Calendar({albumEntries}) {
+    const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
+    const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
+
+
+    function handleClickAlbum(e, albumEntry) {
+        e.preventDefault();
+        setAlbumEntryToDisplay(albumEntry);
+        setDisplayAlbumCard(true);
+    }
+
 
     const currentDate = new Date();
     const year  = currentDate.getFullYear();
@@ -15,7 +26,6 @@ function Calendar({albumEntries}) {
     firstOfMonth.setFullYear(currentDate.getFullYear());
     firstOfMonth.setMonth(currentDate.getMonth());
     firstOfMonth.setDate(1);
-    console.log(firstOfMonth);
 
     const calendarStart = firstOfMonth.getDate() - firstOfMonth.getDay(); //start calendar on earliest Sunday, even if that's in last month
 
@@ -36,15 +46,14 @@ function Calendar({albumEntries}) {
 
         if (todaysEntries.length > 0) {
             return todaysEntries.map((entry) => {
-                return <p>{entry.title}</p>;
+                return <p onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
             });
         }
 
-        return <p>-</p>
+        return <p>-</p>;
     }
 
-    function CalendarWeek(firstDate) {
-    
+    function CalendarWeek(firstDate) {   
         return (
         <div className="row">
             <div className="col">Sun {renderDate(month, firstDate)}   {renderAlbumCards(firstDate)}</div>
@@ -58,13 +67,34 @@ function Calendar({albumEntries}) {
         )
     }
 
-    return (<div className="container">
-        {CalendarWeek(calendarStart)}
-        {CalendarWeek(calendarStart+7)}
-        {CalendarWeek(calendarStart+14)}
-        {CalendarWeek(calendarStart+21)}
-        {CalendarWeek(calendarStart+28)}
-    </div>)
+
+
+
+
+    return (<>
+                <div className="container">
+                    {CalendarWeek(calendarStart)}
+                    {CalendarWeek(calendarStart+7)}
+                    {CalendarWeek(calendarStart+14)}
+                    {CalendarWeek(calendarStart+21)}
+                    {CalendarWeek(calendarStart+28)}
+                </div>
+                
+                <div>
+                {displayAlbumCard ?
+                    <AlbumCard 
+                        key={albumEntryToDisplay.id}
+                        title={albumEntryToDisplay.title}
+                        artist={albumEntryToDisplay.artist}
+                        dateAdded={albumEntryToDisplay.dateAdded}
+                        image={albumEntryToDisplay.image}
+                        rating={albumEntryToDisplay.rating}
+                        comments={albumEntryToDisplay.comments}/>
+                    :
+                    <></>}
+                
+                </div>
+            </>)
 }
 
 export default Calendar;
