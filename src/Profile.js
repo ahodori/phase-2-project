@@ -5,35 +5,45 @@ import EditProfile from './EditProfile';
 
 function Profile ( { user, albumEntries}) {
 
-const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
+    const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
 
-function handleEdit() {
-    setProfileEditFormVisible(isProfileEditFormVisible => !isProfileEditFormVisible)
-}
+    function handleEdit() {
+        setProfileEditFormVisible(isProfileEditFormVisible => !isProfileEditFormVisible)
+    }
 
+    function displayTop5Albums(username) {
+        let submittedAlbums = albumEntries.filter((albumEntry) => albumEntry.userAdded === username);
+        if (submittedAlbums.length > 5) {
+            submittedAlbums = submittedAlbums.slice(-5);
+        }
 
-return (
-    <div>
-        <div className="profilecard">
-            <h2>{user.username}</h2>
-            <img alt="happy man" width="200" height="200" src={user.image}></img>
-            <h4>Bio: </h4>
-            <p>{user.bio}</p>
-            <h4>Fav Genre: {user.favgenre}</h4>
-            <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
-            {isProfileEditFormVisible ? <EditProfile /> : <></>}
-        </div>
+        return submittedAlbums.map((album) => {
+            return <img src={album.image} style={{height:200}}></img>
+        })
+    }
+
+    return (
         <div>
-            <h2>Top 5 Albums</h2>
-            <div>
-                <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png"></img>
+            <div className="profilecard">
+                <h2>{user.username}</h2>
+                <img alt="happy man" width="200" height="200" src={user.image}></img>
+                <h4>Bio: </h4>
+                <p>{user.bio}</p>
+                <h4>Fav Genre: {user.favgenre}</h4>
+                <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
+                {isProfileEditFormVisible ? <EditProfile /> : <></>}
             </div>
             <div>
-                <Calendar albumEntries={albumEntries}/>
+                <h2>Top 5 Albums</h2>
+                <div>
+                    {displayTop5Albums(user.username)}
+                </div>
+                <div>
+                    <Calendar albumEntries={albumEntries}/>
+                </div>
             </div>
         </div>
-    </div>
-  );
+    );
 }
 
 
