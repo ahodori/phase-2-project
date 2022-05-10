@@ -39,6 +39,7 @@ function AddForm( { handleNewAlbum, user } ) {
             title: albumName,
             artist: artistName,
             dateAdded: date,
+            userAdded: user.username,
             image: image,
             rating: rating,
             comments: [{username: user.username, comment: comments}]
