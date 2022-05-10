@@ -11,7 +11,8 @@ import AddForm from "./AddForm";
 function App() {
   const [isAddFormVisible, setAddFormVisible] = useState(true);
   const [albumEntries, setAlbumEntries] = useState([]);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch('http://localhost:3000/albumEntries')
@@ -40,9 +41,14 @@ function App() {
         return updatedProfile
       } else {return user}
     }
-
     setUser(newUpdatedProfile)
   }
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  } 
+
+  const filteredAlbums = albumEntries.filter(albumEntry => albumEntry.artist.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <div className="App">
@@ -51,7 +57,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calendar albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/feed" element={<Feed albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/feed" element={<Feed handleSearch={handleSearch} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 
     </div>
