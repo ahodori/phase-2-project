@@ -3,7 +3,7 @@ import MiniCalendar from './MiniCalendar';
 import Calendar from './Calendar';
 import EditProfile from './EditProfile';
 
-function Profile ( { user, albumEntries}) {
+function Profile ( { user, albumEntries, onUpdatedProfile }) {
 
     const [isProfileEditFormVisible, setProfileEditFormVisible] = useState(false)
 
@@ -30,7 +30,7 @@ function Profile ( { user, albumEntries}) {
                 <p>{user.bio}</p>
                 <h4>Fav Genre: {user.favgenre}</h4>
                 <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
-                {isProfileEditFormVisible ? <EditProfile /> : <></>}
+                {isProfileEditFormVisible ? <EditProfile user={user} onUpdatedProfile={onUpdatedProfile} /> : <></>}
             </div>
             <div>
                 <h2>Most Recent 5 Albums</h2>
