@@ -69,7 +69,7 @@ function Calendar({albumEntries}) {
 
         let datePart = <></>;
         let entriesPart = <p>-</p>;
-        let stylePart = {"font-weight": "bold"};
+        let stylePart = {fontWeight: "bold"};
 
         if (day > 0 && day <= lastDayOfMonth[month]) {
             datePart = `${month+1}/${day}`;
