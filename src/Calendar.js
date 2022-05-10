@@ -9,14 +9,14 @@ function Calendar({albumEntries}) {
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
+    const [displayedYear, setDisplayedYear] = useState(2022);
     const [calendarStart, setCalendarStart] = useState(1);
 
     const currentDate = new Date();
-    const currentYear  = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth();
 
     useEffect(() => {
-        //setDisplayedMonth(currentDate.getMonth());
+        setDisplayedMonth(currentDate.getMonth());
+        setDisplayedYear(currentDate.getFullYear());
     }, [])
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function Calendar({albumEntries}) {
         //currentDate.toISOString().split("T")[0]
 
         let firstOfMonth = new Date();
-        firstOfMonth.setFullYear(currentYear);
+        firstOfMonth.setFullYear(displayedYear);
         firstOfMonth.setMonth(displayedMonth);
         firstOfMonth.setDate(1);
 
@@ -41,11 +41,23 @@ function Calendar({albumEntries}) {
     }
 
     function handleDecrementMonth(e) {
-
+        setDisplayedMonth((currentDisplayedMonth) => {
+            if (currentDisplayedMonth === 0) {
+                setDisplayedYear((currentDisplayedYear) => currentDisplayedYear - 1);
+                return 11;
+            }
+            return currentDisplayedMonth - 1;
+        })
     }
 
     function handleIncrementMonth(e) {
-        
+        setDisplayedMonth((currentDisplayedMonth) => {
+            if (currentDisplayedMonth === 11) {
+                setDisplayedYear((currentDisplayedYear) => currentDisplayedYear + 1);
+                return 0;
+            }
+            return currentDisplayedMonth + 1;
+        })        
     }
 
     function renderDate(month, day) {
@@ -60,7 +72,7 @@ function Calendar({albumEntries}) {
     function renderAlbumCards(day) {
         const dispMonth = displayedMonth+1<10 ? `0${displayedMonth+1}` : `${displayedMonth+1}`;
         const dispDay   = day<10   ? `0${day}`   : `${day}`;
-        const todaysEntries = albumEntries.filter((albumEntry) => albumEntry.dateAdded === `${currentYear}-${dispMonth}-${dispDay}`);
+        const todaysEntries = albumEntries.filter((albumEntry) => albumEntry.dateAdded === `${displayedYear}-${dispMonth}-${dispDay}`);
         //console.log(todaysEntries);
 
         if (todaysEntries.length > 0) {
@@ -93,7 +105,7 @@ function Calendar({albumEntries}) {
     return (<>
                 <div>
                     <button onClick={handleDecrementMonth}>&lt;--</button>
-                    {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][displayedMonth]}
+                    {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][displayedMonth]} {displayedYear}
                     <button onClick={handleIncrementMonth}>--&gt;</button>
                 </div>
                 <div className="container">
