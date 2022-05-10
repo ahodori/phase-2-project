@@ -1,46 +1,68 @@
 {
-    "user": {
-        "username": "johnsmith1337",
-        "bio": "Hey my name is John and I like pretty much all types of music, I'm very cool",
-        "image": "https://image.shutterstock.com/shutterstock/photos/190821629/display_1500/stock-photo-happy-man-with-white-teeth-smiling-with-thumbs-up-isolated-on-a-white-background-190821629.jpg",
-        "favgenre": "Guitar"
+  "user": {
+    "username": "johnsmith1337",
+    "bio": "Hey my name is John and I like pretty much all types of music, I'm very cool",
+    "image": "https://image.shutterstock.com/shutterstock/photos/190821629/display_1500/stock-photo-happy-man-with-white-teeth-smiling-with-thumbs-up-isolated-on-a-white-background-190821629.jpg",
+    "favgenre": "Guitar"
+  },
+  "albumEntries": [
+    {
+      "id": 1,
+      "title": "Discovery",
+      "artist": "Daft Punk",
+      "dateAdded": "2022-05-09",
+      "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png",
+      "rating": 10,
+      "comments": []
     },
-    "albumEntries": [
+    {
+      "id": 2,
+      "title": "Flood",
+      "artist": "Boris",
+      "dateAdded": "2022-05-07",
+      "image": "https://upload.wikimedia.org/wikipedia/en/a/af/Boris_flood.jpg",
+      "rating": 10,
+      "comments": []
+    },
+    {
+      "id": 3,
+      "title": "Kidz Bop 16",
+      "artist": "KIDZ BOP",
+      "dateAdded": "2022-05-13",
+      "image": "https://m.media-amazon.com/images/I/61cNWcmEOHL._SX425_.jpg",
+      "rating": 10,
+      "comments": [
         {
-            "id": 1,
-            "title": "Discovery",
-            "artist": "Daft Punk",
-            "dateAdded": "2022-05-09",
-            "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Daft_Punk_-_Discovery.png",
-            "rating": 10,
-            "comments": []
+          "username": "johnsmith1337",
+          "comment": "This. Album. Rules!!!!"
         },
         {
-            "id": 2,
-            "title": "Flood",
-            "artist": "Boris",
-            "dateAdded": "2022-05-07",
-            "image": "https://upload.wikimedia.org/wikipedia/en/a/af/Boris_flood.jpg",
-            "rating": 10,
-            "comments": []
-        },
-        {
-            "id": 3,
-            "title": "Kidz Bop 16",
-            "artist": "KIDZ BOP",
-            "dateAdded": "2022-05-13",
-            "image": "https://m.media-amazon.com/images/I/61cNWcmEOHL._SX425_.jpg",
-            "rating": 10,
-            "comments": [
-                {
-                    "username": "johnsmith1337",
-                    "comment": "This. Album. Rules!!!!"
-                },
-                {
-                    "username": "janedoe2022",
-                    "comment": "this is the greatest day of my life"
-                }
-            ]
+          "username": "janedoe2022",
+          "comment": "this is the greatest day of my life"
         }
-    ]
+      ]
+    },
+    {
+      "title": "Cats in Jazz",
+      "artist": "Cats",
+      "dateAdded": "2022-05-12",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg",
+      "comments": [],
+      "id": 4
+    },
+    {
+      "title": "Yellow Lab",
+      "artist": "Woof Woof",
+      "dateAdded": "2022-05-27",
+      "image": "https://images.squarespace-cdn.com/content/v1/5c906fe6fd67934053127009/1559101261532-KXOAQWM6HUEBLVB32K9Z/homepage_lab.jpg",
+      "rating": "14",
+      "comments": [
+        {
+          "username": "johnsmith1337",
+          "comment": "Big woof for a big pup, great beat"
+        }
+      ],
+      "id": 5
+    }
+  ]
 }

@@ -32,6 +32,11 @@ code {
   padding-top: 20px;
 }
 
-.albumfeedlist{
+.albumfeedlist {
   list-style-type: none;
+}
+
+.feedcardimg {
+  width: 200px;
+  height: auto;
 }
