@@ -71,7 +71,7 @@ function AddForm( { handleNewAlbum, user } ) {
             <form onSubmit={handleSubmit}>
                 <label>Album title:</label><input type="text" name="title" onChange={handleAlbum} value={albumName}></input>
                 <label>Artist name:</label><input type="text" name="artist" onChange={handleArtist} value={artistName}></input>
-                <label>Rating:</label><input type="number" name="rating" onChange={handleRating} value={rating}></input>
+                <label>Rating:</label><input type="number" name="rating" max="10" onChange={handleRating} value={rating}></input>
                 <label>Date added:</label><input type="date" name="dateAdded" onChange={handleDate} value={date}></input>
                 <label>Image: </label><input type="text" name="image" onChange={handleImage} value={image}></input>
                 <label>Comments:</label><input type="text" name="comments" onChange={handleComments} value={comments}></input>

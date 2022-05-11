@@ -59,6 +59,13 @@ function App() {
     setAlbumEntries(sortedByAlpha)
   } 
 
+  const handleSortByRating = () => {
+    const sortedByRating = [...albumEntries].sort((a,b) => {
+      return b.rating - a.rating
+    })
+    setAlbumEntries(sortedByRating)
+  } 
+
 
   //below function needs attention, trying to access comments key within each object of album entries array
   const handleNewCommentInEntries = (newlyAddedComment) => {
@@ -73,7 +80,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/entries/" element={<Feed handleSearch={handleSearch} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/" element={<Feed handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
         <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 

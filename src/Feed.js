@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
-function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
+function Feed({ handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
 //state that says alphabathical, buttons to set to alphabetical
 //one state that's the sort method
 //useeffect might sort by a particular method when that is updated.
@@ -33,8 +33,8 @@ function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlph
             <div>
                 <h1>Your Music</h1>
                 <Search handleSearch={handleSearch} search={search} />
-                <button onClick={handleSortAlphabeticalByArtist}>Sort A-Z</button>
-                <button>Sort by Rating</button>
+                <button onClick={handleSortAlphabeticalByArtist}>Sort A-Z by Artist</button>
+                <button onClick={handleSortByRating}>Sort by Rating</button>
             </div>
             <div>
                 <ul className="albumfeedlist">
