@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AlbumCard from "./AlbumCard";
+import { Col, Container, Row } from "react-bootstrap";
 
 
 
@@ -131,23 +132,25 @@ function Calendar({albumEntries, filteredDeletedAlbum}) {
                     {renderCalendarWeek(calendarStart+21)}
                     {renderCalendarWeek(calendarStart+28)}
                     {calendarStart+35 <= lastDayOfMonth[displayedMonth] ? renderCalendarWeek(calendarStart+35) : <></>}
+
+                    <Row>
+                        <Col style={{display: "flex", alignItems: "center", justifyContent: "center"}} >
+                        {displayAlbumCard ?
+                            <AlbumCard
+                                key={albumEntryToDisplay.id}
+                                title={albumEntryToDisplay.title}
+                                artist={albumEntryToDisplay.artist}
+                                dateAdded={albumEntryToDisplay.dateAdded}
+                                image={albumEntryToDisplay.image}
+                                rating={albumEntryToDisplay.rating}
+                                comments={albumEntryToDisplay.comments}
+                                filteredDeletedAlbum={filteredDeletedAlbum}/>
+                        :
+                            <></>}
+                        </Col>
+                    </Row> 
                 </div>
                 
-                <div>
-                {displayAlbumCard ?
-                    <AlbumCard 
-                        key={albumEntryToDisplay.id}
-                        title={albumEntryToDisplay.title}
-                        artist={albumEntryToDisplay.artist}
-                        dateAdded={albumEntryToDisplay.dateAdded}
-                        image={albumEntryToDisplay.image}
-                        rating={albumEntryToDisplay.rating}
-                        comments={albumEntryToDisplay.comments}
-                        filteredDeletedAlbum={filteredDeletedAlbum}/>
-                    :
-                    <></>}
-                
-                </div>
             </>)
 }
 
