@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
 
 
-function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum}) {
-    let params = useParams();
-    if (params) console.log(params);
+
+function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum, albumEntries}) {
 
     const handleDelete = () => {
         fetch(`http://localhost:3000/albumEntries/${id}`, {
@@ -20,7 +18,7 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filte
             <img src={image} alt="album list item" className="feedcardimg"></img>
             <p>Added {dateAdded}</p>
             <p>Rating: {rating}/10</p>
-            {comments.map((comment) => {
+            {comments?.map((comment) => {
                 return(<p key={comment.comment}><span>{comment.username}: </span>{comment.comment}</p>)
             })}
             <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
