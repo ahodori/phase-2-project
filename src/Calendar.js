@@ -5,7 +5,7 @@ import AlbumCard from "./AlbumCard";
 
 
 
-function Calendar({albumEntries}) {
+function Calendar({albumEntries, filteredDeletedAlbum}) {
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
@@ -142,7 +142,8 @@ function Calendar({albumEntries}) {
                         dateAdded={albumEntryToDisplay.dateAdded}
                         image={albumEntryToDisplay.image}
                         rating={albumEntryToDisplay.rating}
-                        comments={albumEntryToDisplay.comments}/>
+                        comments={albumEntryToDisplay.comments}
+                        filteredDeletedAlbum={filteredDeletedAlbum}/>
                     :
                     <></>}
                 
