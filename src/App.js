@@ -11,11 +11,10 @@ import AlbumCard from "./AlbumCard";
 import SingleCardDisplay from "./SingleCardDisplay";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal } from "react-bootstrap";
-import { Button } from "bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 function App() {
-  const [isAddFormVisible, setAddFormVisible] = useState(true);
+  const [isAddFormVisible, setAddFormVisible] = useState(false);
   const [albumEntries, setAlbumEntries] = useState([]);
   const [user, setUser] = useState({});
   const [search, setSearch] = useState("");
@@ -80,6 +79,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+        <Button onClick={() => setAddFormVisible(true)}>Add Entry</Button>
         <Modal show={isAddFormVisible} onHide={() => setAddFormVisible(false)}>
           <AddForm handleNewAlbum={handleNewAlbum} user={user}/> 
         </Modal>
