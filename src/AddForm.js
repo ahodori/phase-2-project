@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Button} from "react-bootstrap";
 
 function AddForm( { handleNewAlbum, user } ) {
     const [albumName, setAlbumName] = useState("");
@@ -67,16 +68,34 @@ function AddForm( { handleNewAlbum, user } ) {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Album title:</label><input type="text" name="title" onChange={handleAlbum} value={albumName}></input>
-                <label>Artist name:</label><input type="text" name="artist" onChange={handleArtist} value={artistName}></input>
-                <label>Rating:</label><input type="number" name="rating" max="10" onChange={handleRating} value={rating}></input>
-                <label>Date added:</label><input type="date" name="dateAdded" onChange={handleDate} value={date}></input>
-                <label>Image: </label><input type="text" name="image" onChange={handleImage} value={image}></input>
-                <label>Comments:</label><input type="text" name="comments" onChange={handleComments} value={comments}></input>
-                <button type="submit">Submit</button>
-            </form>
+        <div style={{display: "flex", justifyContent: "center"}}>
+            <Form onSubmit={handleSubmit} style={{width: "30rem"}}>
+                <Form.Group>
+                    <Form.Label>Album title:</Form.Label>
+                    <Form.Control type="text" name="title" placeholder="" onChange={handleAlbum} value={albumName}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Artist name:</Form.Label>
+                    <Form.Control type="text" name="artist" placeholder="" onChange={handleArtist} value={artistName}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Rating:</Form.Label>
+                    <Form.Control type="text" name="rating" placeholder="" onChange={handleRating} value={rating}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Date added:</Form.Label>
+                    <Form.Control type="date" name="dateAdded" placeholder="" onChange={handleDate} value={date}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Image URL:</Form.Label>
+                    <Form.Control type="text" name="image" placeholder="" onChange={handleImage} value={image}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Comment:</Form.Label>
+                    <Form.Control type="text" name="comments" placeholder="" onChange={handleComments} value={comments}/>                   
+                </Form.Group>
+                <Button type="submit">Submit</Button>
+            </Form>
         </div>
     )
 }
