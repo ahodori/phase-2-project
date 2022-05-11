@@ -11,6 +11,8 @@ import AlbumCard from "./AlbumCard";
 import SingleCardDisplay from "./SingleCardDisplay";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal } from "react-bootstrap";
+import { Button } from "bootstrap";
 
 function App() {
   const [isAddFormVisible, setAddFormVisible] = useState(true);
@@ -78,7 +80,9 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      {isAddFormVisible ? <AddForm handleNewAlbum={handleNewAlbum} user={user}/> : <></>}
+        <Modal show={isAddFormVisible} onHide={() => setAddFormVisible(false)}>
+          <AddForm handleNewAlbum={handleNewAlbum} user={user}/> 
+        </Modal>
       <Routes>
         <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
