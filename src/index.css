@@ -25,6 +25,42 @@ h1 {
   
 }
 
+.searchbar {
+  padding: 20px;
+}
+
+.sortbtns {
+  padding: 10px;
+}
+
+
+.sort {
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: #166088;
+  color: white;
+}
+
+.sort:hover {
+  background-color: #4F6D7A;
+}
+
+.profilecard {
+  
+  border-style: double;
+  float: left;
+  width: 100%;
+  padding: 40px;
+  
+}
+
+
+.profileimg{
+  float:left;
+  height: auto;
+  width: 200px;
+  position: static;
+}
 
 #navbarmain {
   width: 100%;
@@ -32,10 +68,6 @@ h1 {
   
 }
 
-.profilecard {
-  border-style: double;
-  display: block;
-}
 
 .logo {
   height: 20px;
