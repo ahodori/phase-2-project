@@ -10,7 +10,8 @@ function AlbumCard({ onUpdatedAlbum, albumEntry, title, artist, dateAdded, image
     const handleDelete = () => {
         fetch(`http://localhost:3000/albumEntries/${id}`, {
             method:'DELETE',
-        })
+        }).then(res=>res.json())
+        .then(json=>console.log(json));
         filteredDeletedAlbum(id)
     }
 

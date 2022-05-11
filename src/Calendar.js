@@ -34,7 +34,10 @@ function Calendar({albumEntries, filteredDeletedAlbum}) {
     }, [displayedMonth])
 
 
-
+    function handleDeleteAlbum(id) {
+        setDisplayAlbumCard(false);
+        filteredDeletedAlbum(id);
+    }
 
     function handleClickAlbum(e, albumEntry) {
         e.preventDefault();
@@ -144,7 +147,7 @@ function Calendar({albumEntries, filteredDeletedAlbum}) {
                                 image={albumEntryToDisplay.image}
                                 rating={albumEntryToDisplay.rating}
                                 comments={albumEntryToDisplay.comments}
-                                filteredDeletedAlbum={filteredDeletedAlbum}/>
+                                filteredDeletedAlbum={handleDeleteAlbum}/>
                         :
                             <></>}
                         </Col>

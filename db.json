@@ -75,6 +75,21 @@
         }
       ],
       "id": 5
+    },
+    {
+      "title": "a",
+      "artist": "b",
+      "dateAdded": "2022-05-22",
+      "userAdded": "Todd",
+      "image": "d",
+      "rating": "c",
+      "comments": [
+        {
+          "username": "Todd",
+          "comment": "e"
+        }
+      ],
+      "id": 6
     }
   ]
 }
