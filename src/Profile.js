@@ -22,10 +22,11 @@ function Profile ( { user, albumEntries, onUpdatedProfile }) {
         })
     }
 
-        return <div>
+        return (
+        <div>
             <div className="profilecard">
+                <img alt="happy man" src={user.image} className="profileimg"></img>
                 <h2>{user.username}</h2>
-                <img alt="happy man" width="200" height="200" src={user.image}></img>
                 <h4>Bio: </h4>
                 <p>{user.bio}</p>
                 <h4>Fav Genre: {user.favgenre}</h4>
@@ -42,7 +43,7 @@ function Profile ( { user, albumEntries, onUpdatedProfile }) {
                 </div>
             </div>
         </div>
-}
+)}
 
 
 

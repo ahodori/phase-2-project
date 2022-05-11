@@ -48,6 +48,15 @@ function App() {
     setUser(newUpdatedProfile)
   }
 
+  const onUpdatedAlbum = (updatedAlbum) => {
+    const newUpdatedAlbum = albumEntries.map(albumEntry => {
+      if (albumEntry.id === updatedAlbum.id) {
+        return updatedAlbum
+      } else {return albumEntry}
+    })
+    setAlbumEntries(newUpdatedAlbum)
+  }
+    
   const handleSearch = (e) => {
     setSearch(e.target.value)
   } 
@@ -85,7 +94,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/entries/" element={<Feed handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/" element={<Feed onUpdatedAlbum={onUpdatedAlbum} handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
         <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 

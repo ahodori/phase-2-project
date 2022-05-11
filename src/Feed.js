@@ -4,7 +4,7 @@ import AlbumCard from './AlbumCard'
 import Search from './Search'
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Feed({ handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
+function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
 //state that says alphabathical, buttons to set to alphabetical
 //one state that's the sort method
 //useeffect might sort by a particular method when that is updated.
@@ -26,16 +26,20 @@ function Feed({ handleSortByRating, albumEntries, filteredDeletedAlbum, handleSe
                 comments={albumEntry.comments}
                 filteredDeletedAlbum={filteredDeletedAlbum}
                 handleNewCommentInEntries={handleNewCommentInEntries}
+                albumEntry={albumEntry}
+                onUpdatedAlbum={onUpdatedAlbum}
                 />
     ))
 
     return (
         <div>
-            <div>
+            <div className="searchnsort">
                 <h1>Your Music</h1>
-                <Search handleSearch={handleSearch} search={search} />
-                <button onClick={handleSortAlphabeticalByArtist}>Sort A-Z by Artist</button>
-                <button onClick={handleSortByRating}>Sort by Rating</button>
+                <Search handleSearch={handleSearch} search={search}/>
+                <div className="sortbtns">
+                    <button className="sort" onClick={handleSortAlphabeticalByArtist}>Sort A-Z by Artist</button>
+                    <button className="sort" onClick={handleSortByRating}>Sort by Rating</button>
+                </div>
             </div>
             <div>
                 <ul className="albumfeedlist">
