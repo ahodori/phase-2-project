@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes } from "react-router-dom";
 
-import './App.css';
 import Calendar from './Calendar';
 import Profile from './Profile';
 import Feed from './Feed';
