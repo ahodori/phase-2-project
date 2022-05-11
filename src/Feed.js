@@ -2,21 +2,29 @@ import React from 'react'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
-function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, search }) {
+function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
+//state that says alphabathical, buttons to set to alphabetical
+//one state that's the sort method
+//useeffect might sort by a particular method when that is updated.
 
-    const albums = albumEntries.sort((a,b) => a.dateAdded > b.dateAdded ? 1 : -1)
-                               .map((albumEntry) => (
-                                    <AlbumCard 
-                                        key={albumEntry.id}
-                                        id={albumEntry.id}
-                                        title={albumEntry.title}
-                                        artist={albumEntry.artist}
-                                        dateAdded={albumEntry.dateAdded}
-                                        image={albumEntry.image}
-                                        rating={albumEntry.rating}
-                                        comments={albumEntry.comments}
-                                        filteredDeletedAlbum={filteredDeletedAlbum}
-                                        />
+
+
+
+
+    const albums = albumEntries
+        .map((albumEntry) => (
+            <AlbumCard 
+                key={albumEntry.id}
+                id={albumEntry.id}
+                title={albumEntry.title}
+                artist={albumEntry.artist}
+                dateAdded={albumEntry.dateAdded}
+                image={albumEntry.image}
+                rating={albumEntry.rating}
+                comments={albumEntry.comments}
+                filteredDeletedAlbum={filteredDeletedAlbum}
+                handleNewCommentInEntries={handleNewCommentInEntries}
+                />
     ))
 
     return (
@@ -24,6 +32,8 @@ function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, search }) {
             <div>
                 <h1>Your Music</h1>
                 <Search handleSearch={handleSearch} search={search} />
+                <button onClick={handleSortAlphabeticalByArtist}>Sort A-Z</button>
+                <button>Sort by Rating</button>
             </div>
             <div>
                 <ul className="albumfeedlist">
