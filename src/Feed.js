@@ -1,4 +1,5 @@
 import React from 'react'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 
@@ -21,15 +22,15 @@ function Feed({ albumEntries, filteredDeletedAlbum, handleSearch, search }) {
 
     return (
         <div>
-            <div>
-                <h1>Your Music</h1>
-                <Search handleSearch={handleSearch} search={search} />
-            </div>
-            <div>
-                <ul className="albumfeedlist">
-                    {albums}
-                </ul>
-            </div>
+                        <div>
+                            <h1>Your Music</h1>
+                            <Search handleSearch={handleSearch} search={search} />
+                        </div>
+                        <div>
+                            <ul className="albumfeedlist">
+                                {albums}
+                            </ul>
+                        </div>
         </div>
 
     )

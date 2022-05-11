@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useParams } from "react-router-dom";
 
 
 function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum}) {
+    let params = useParams();
+    if (params) console.log(params);
 
     const handleDelete = () => {
         fetch(`http://localhost:3000/albumEntries/${id}`, {
@@ -21,6 +24,7 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filte
                 return(<p key={comment.comment}><span>{comment.username}: </span>{comment.comment}</p>)
             })}
             <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
+
         </div>
     )
 }
