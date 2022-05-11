@@ -1,4 +1,5 @@
 import React from 'react'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 

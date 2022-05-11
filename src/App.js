@@ -7,6 +7,8 @@ import Profile from './Profile';
 import Feed from './Feed';
 import Header from './Header';
 import AddForm from "./AddForm";
+import AlbumCard from "./AlbumCard";
+import SingleCardDisplay from "./SingleCardDisplay";
 
 function App() {
   const [isAddFormVisible, setAddFormVisible] = useState(true);
@@ -71,7 +73,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/feed" element={<Feed handleNewCommentInEntries={handleNewCommentInEntries} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/" element={<Feed handleSearch={handleSearch} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 
     </div>
