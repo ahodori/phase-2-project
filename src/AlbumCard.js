@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Comments from './Comments';
+import { Card, ListGroup } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum, handleNewCommentInEntries}) {
@@ -19,19 +21,25 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filte
     
     
     return (
-        <div>
-            <h1>{title}</h1>
-            <h2>{artist}</h2>
-            <img src={image} alt="album list item" className="feedcardimg"></img>
-            <p>Added {dateAdded}</p>
-            <p>Rating: {rating}/10</p>
-            {comments?.map((comment) => {
-                return(<p key={comment.comment}><span>{comment.username}: </span>{comment.comment}</p>)
-            })}
-            <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
-            <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? <></> : "Add Comment"}</button>
-            {isAddingComment ? <Comments /> : <></>}
-        </div>
+        <Card style={{width: '20rem' }}>
+            <Card.Img src={image} alt="album list item" className="feedcardimg" />
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Subtitle>{artist}</Card.Subtitle>
+                <Card.Text>Added {dateAdded}</Card.Text>
+                <Card.Text>Rating: {rating}/10</Card.Text>
+                <ListGroup>
+                {comments?.map((comment) => {
+                    return(<ListGroup.Item key={comment.comment}><span>{comment.username}: </span>{comment.comment}</ListGroup.Item>)
+                })}
+                </ListGroup>
+
+                <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
+                <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? <></> : "Add Comment"}</button>
+                {isAddingComment ? <Comments /> : <></>}
+            </Card.Body>
+
+        </Card>
     )
 }
 

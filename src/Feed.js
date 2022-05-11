@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Feed({ handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
 //state that says alphabathical, buttons to set to alphabetical

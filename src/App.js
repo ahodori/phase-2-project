@@ -10,6 +10,8 @@ import AddForm from "./AddForm";
 import AlbumCard from "./AlbumCard";
 import SingleCardDisplay from "./SingleCardDisplay";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   const [isAddFormVisible, setAddFormVisible] = useState(true);
   const [albumEntries, setAlbumEntries] = useState([]);
