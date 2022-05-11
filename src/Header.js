@@ -11,7 +11,7 @@ return (
         <nav className="nav">
             <ul className="headerlinks">
                 <li className="headerli"><Link to="/profile">Profile</Link></li>
-                <li className="headerli"><Link to="/feed">Feed</Link></li>
+                <li className="headerli"><Link to="/entries">Feed</Link></li>
                 <li className="headerli"><Link to="/">Home</Link></li>
             </ul>
         </nav>
