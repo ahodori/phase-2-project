@@ -45,6 +45,36 @@
           "comment": "this is the greatest day of my life"
         }
       ]
+    },
+    {
+      "title": "The Fast and Furious Soundtrack",
+      "artist": "2 Fast",
+      "dateAdded": "",
+      "userAdded": "Todd",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/TheFastandtheFurioussoundtrack.jpg/220px-TheFastandtheFurioussoundtrack.jpg",
+      "rating": "1",
+      "comments": [
+        {
+          "username": "Todd",
+          "comment": "Not as good as the first 8"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "title": "Believe",
+      "artist": "Cher",
+      "dateAdded": "",
+      "userAdded": "Todd",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Cher-believe-cover.JPG/220px-Cher-believe-cover.JPG",
+      "rating": "7",
+      "comments": [
+        {
+          "username": "Todd",
+          "comment": "great album cover"
+        }
+      ],
+      "id": 5
     }
   ]
 }

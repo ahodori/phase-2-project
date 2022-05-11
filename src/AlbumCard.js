@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
+import Comments from './Comments';
 
 
-
-function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum, albumEntries}) {
+function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filteredDeletedAlbum, handleNewCommentInEntries}) {
+    const [isAddingComment, setIsAddingComment] = useState(false)
 
     const handleDelete = () => {
         fetch(`http://localhost:3000/albumEntries/${id}`, {
@@ -10,6 +11,12 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filte
         })
         filteredDeletedAlbum(id)
     }
+
+    const handleAddingComment = () => {
+        setIsAddingComment(isAddingComment => !isAddingComment)
+    }
+
+    
     
     return (
         <div>
@@ -22,7 +29,8 @@ function AlbumCard({title, artist, dateAdded, image, rating, comments, id, filte
                 return(<p key={comment.comment}><span>{comment.username}: </span>{comment.comment}</p>)
             })}
             <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
-
+            <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? <></> : "Add Comment"}</button>
+            {isAddingComment ? <Comments /> : <></>}
         </div>
     )
 }

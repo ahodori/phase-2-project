@@ -69,3 +69,7 @@ code {
 .headerlinks{
   list-style-type: none;
 }
+
+.row{
+  cursor:pointer;
+}

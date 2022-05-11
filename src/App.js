@@ -52,12 +52,26 @@ function App() {
 
   const filteredAlbums = albumEntries.filter(albumEntry => albumEntry.artist.toLowerCase().includes(search.toLowerCase()))
 
+  const handleSortAlphabeticalByArtist = () => {
+    const sortedByAlpha = [...albumEntries].sort((a,b) => {
+      return a.artist.localeCompare(b.artist)
+    })
+    setAlbumEntries(sortedByAlpha)
+  } 
+
+
+  //below function needs attention, trying to access comments key within each object of album entries array
+  const handleNewCommentInEntries = (newlyAddedComment) => {
+    setAlbumEntries.comments([...albumEntries, newlyAddedComment])
+  }
+
+
   return (
     <div className="App">
       <Header/>
       {isAddFormVisible ? <AddForm handleNewAlbum={handleNewAlbum} user={user}/> : <></>}
       <Routes>
-        <Route path="/" element={<Calendar albumEntries={albumEntries}/>}></Route>
+        <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
         <Route path="/entries/" element={<Feed handleSearch={handleSearch} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
         <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
