@@ -108,6 +108,7 @@ function App() {
           <AddForm handleNewAlbum={handleNewAlbum} user={user}/> 
         </Modal>
       <Routes>
+
         <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries} onUpdatedAlbum={onUpdatedAlbum} handleNewCommentInEntries={handleNewCommentInEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
         <Route path="/entries/" element={<Feed sortMethod={sortMethod}

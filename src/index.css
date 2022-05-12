@@ -10,9 +10,24 @@ h1 {
   color: #4F6D7A;
 }
 
+.calendarviewh1 {
+  font-family: monospace;
+  letter-spacing: 4px;
+  
+}
+
+.mainpageh3{
+  padding-top: 10px;
+  padding-bottom: 40px;
+  font-size: 12px;
+  color: #0B3246;
+}
+
 h2 {
   color:#166088;
 }
+
+
 
 .searchbar {
   padding: 20px;
