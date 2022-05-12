@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AlbumCard from "./AlbumCard";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Modal, Row } from "react-bootstrap";
 
 
 
@@ -138,21 +138,20 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
                     <Row>
                         <Col style={{display: "flex", alignItems: "center", justifyContent: "center"}} >
-                        {displayAlbumCard ?
+                        <Modal show={displayAlbumCard} onHide={() => setDisplayAlbumCard(false)}>
                             <AlbumCard
-                                key={albumEntryToDisplay.id}
-                                albumEntry={albumEntryToDisplay}
-                                title={albumEntryToDisplay.title}
-                                artist={albumEntryToDisplay.artist}
-                                dateAdded={albumEntryToDisplay.dateAdded}
-                                image={albumEntryToDisplay.image}
-                                id={albumEntryToDisplay.id}
-                                rating={albumEntryToDisplay.rating}
-                                comments={albumEntryToDisplay.comments}
-                                filteredDeletedAlbum={handleDeleteAlbum}
-                                onUpdatedAlbum={onUpdatedAlbum}/>
-                        :
-                            <></>}
+                                    key={albumEntryToDisplay.id}
+                                    albumEntry={albumEntryToDisplay}
+                                    title={albumEntryToDisplay.title}
+                                    artist={albumEntryToDisplay.artist}
+                                    dateAdded={albumEntryToDisplay.dateAdded}
+                                    image={albumEntryToDisplay.image}
+                                    id={albumEntryToDisplay.id}
+                                    rating={albumEntryToDisplay.rating}
+                                    comments={albumEntryToDisplay.comments}
+                                    filteredDeletedAlbum={handleDeleteAlbum}
+                                    onUpdatedAlbum={onUpdatedAlbum}/>
+                        </Modal>
                         </Col>
                     </Row> 
                 </div>
