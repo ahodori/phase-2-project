@@ -25,13 +25,16 @@ function Profile ( { user, albumEntries, onUpdatedProfile }) {
         return (
         <div>
             <div className="profilecard">
-                <img alt="happy man" src={user.image} className="profileimg"></img>
-                <h2>{user.username}</h2>
-                <h4>Bio: </h4>
-                <p>{user.bio}</p>
-                <h4>Fav Genre: {user.favgenre}</h4>
-                <button onClick={handleEdit}>{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
-                {isProfileEditFormVisible ? <EditProfile user={user} onUpdatedProfile={(updatedProfile) => {setProfileEditFormVisible(false); return onUpdatedProfile(updatedProfile);}} /> : <></>}
+                <img alt="happy man" src={user.image} id="profileimg"></img>
+                    <div className="profilecolumn">
+                        <hr></hr>
+                        <h2>{user.username}</h2>
+                        <h4>Bio: </h4>
+                        <p>{user.bio}</p>
+                        <h4>Fav Genre: {user.favgenre}</h4>
+                        <button onClick={handleEdit} className="profileeditbtn">{isProfileEditFormVisible ? "Nvm" : "Edit Profile"}</button>
+                        {isProfileEditFormVisible ? <EditProfile user={user} onUpdatedProfile={(updatedProfile) => {setProfileEditFormVisible(false); return onUpdatedProfile(updatedProfile);}} /> : <></>}
+                    </div>
             </div>
             <div>
                 <h2>Most Recent 5 Albums</h2>

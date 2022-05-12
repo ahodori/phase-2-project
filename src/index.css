@@ -2,27 +2,16 @@
   text-align: center;
   background-color: #C0D6DF;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  margin-left: 0;
+  padding-bottom: 80px;
 }
-
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
 
 h1 {
   color: #4F6D7A;
-  
+}
+
+h2 {
+  color:#166088;
 }
 
 .searchbar {
@@ -33,6 +22,9 @@ h1 {
   padding: 10px;
 }
 
+.calendar {
+  color:#0b3246;
+}
 
 .sort {
   font-size: 14px;
@@ -46,20 +38,41 @@ h1 {
 }
 
 .profilecard {
+  align-content: center;
+  background-color: #4f6d7a;
   
-  border-style: double;
-  float: left;
-  width: 100%;
+  border-color: #F1F7F8;
+  border-left: #0b3246;
+  border-width: 20px;
+  border-radius: 2px;
+  border-style: solid;
+  width: 50%;
   padding: 40px;
+  
+  column-count: 2;
+  text-align: right;
+  font-size: smaller;
+  column-gap: normal;
+  display:grid;
   
 }
 
+.profileeditbtn {
+  background-color: #7798A6;
+  border-radius: 6px;
+}
 
-.profileimg{
+.profileeditbtn:hover{
+  background-color: #b5c7cf;
+}
+
+
+#profileimg{
   float:left;
   height: auto;
   width: 200px;
   position: static;
+  column-span: all;
 }
 
 #navbarmain {
