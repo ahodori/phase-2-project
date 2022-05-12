@@ -62,7 +62,7 @@ function EditProfile( { user, onUpdatedProfile } ) {
                 <label>Image: </label><input type="text" name="image" onChange={handleImage} value={image}></input>
                 <label>Bio: </label><input type="text" name="bio" onChange={handleBio} value={bio}></input>
                 <label>Fav Genre: </label><input type="text" name="favgenre" onChange={handleFavGenre} value={favGenre}></input>
-                <button type="completededit">Completed Edits</button>
+                <button className="profileeditbtn" type="completededit">Completed Edits</button>
             </form>
         </div>
     )

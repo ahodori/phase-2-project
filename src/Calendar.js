@@ -114,7 +114,7 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
 
 
-    return (<>
+    return (<div className="calendar">
                 <div className="container">
                     <div className="row">
                         <div className="col">
@@ -157,7 +157,7 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
                     </Row> 
                 </div>
                 
-            </>)
+            </div>)
 }
 
 export default Calendar;
