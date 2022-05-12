@@ -82,11 +82,11 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
         if (todaysEntries.length > 0) {
             entriesPart = todaysEntries.map((entry) => {
-                return <p onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
+                return <p className="calendar-entries" onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
             });
         }
 
-        return <><span style={stylePart}>{datePart}</span> {entriesPart}</>
+        return <><span style={stylePart}>{datePart}</span> <span>{entriesPart}</span></>
     }
 
     function renderAlbumCards(day) {
