@@ -78,16 +78,25 @@ function App() {
     const referredAlbum = albumEntries.filter((album) => album.id === albumId)[0];
     const unreferredAlbums = albumEntries.filter((album) => album.id !== albumId);
 
-    console.log(referredAlbum);
-    console.log(referredAlbum.comments);
-
     const newComments = (referredAlbum.comments.length > 0) ? [ ...referredAlbum.comments, newlyAddedComment] : [newlyAddedComment];
 
     const newAlbum = {
                         ...referredAlbum,
                         comments: newComments
                       };
-    setAlbumEntries([...unreferredAlbums, newAlbum]);
+
+    fetch(`http://localhost:3000/albumEntries/${albumId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbum),
+        })
+        .then(res=>res.json())
+        .then(json=>{
+          console.log(json);
+          setAlbumEntries([...unreferredAlbums, newAlbum]);
+        })
   }
 
 
