@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Comments( {handleNewCommentInEntries}) {
+function Comments( {handleNewCommentInEntries, id}) {
     const [newComment, setNewComment] = useState('');
     const [newUsername, setNewUsername] = useState('');
 
@@ -17,23 +17,12 @@ function Comments( {handleNewCommentInEntries}) {
         e.preventDefault();
 
         const newlyAddedComment = {
-            Username: newUsername,
-            Comment: newComment
+            username: newUsername,
+            comment: newComment
         }
 
-        handleNewCommentInEntries(newlyAddedComment)
+        handleNewCommentInEntries(id, newlyAddedComment)
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     return(

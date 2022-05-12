@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AlbumCard from "./AlbumCard";
-import { Col, Container, Row } from "react-bootstrap";
-import userEvent from "@testing-library/user-event";
+
+import { Col, Container, Modal, Row } from "react-bootstrap";
 
 
 
 
-function Calendar({ user, albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
+
+
+function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum, handleNewCommentInEntries}) {
+
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
@@ -83,11 +86,11 @@ function Calendar({ user, albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
         if (todaysEntries.length > 0) {
             entriesPart = todaysEntries.map((entry) => {
-                return <p onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
+                return <p className="calendar-entries" onClick={(e) => handleClickAlbum(e, entry)}>{entry.title}</p>;
             });
         }
 
-        return <><span style={stylePart}>{datePart}</span> {entriesPart}</>
+        return <><span style={stylePart}>{datePart}</span> <span>{entriesPart}</span></>
     }
 
     function renderAlbumCards(day) {
@@ -142,21 +145,21 @@ function Calendar({ user, albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
                     <Row>
                         <Col style={{display: "flex", alignItems: "center", justifyContent: "center"}} >
-                        {displayAlbumCard ?
+                        <Modal show={displayAlbumCard} onHide={() => setDisplayAlbumCard(false)}>
                             <AlbumCard
-                                key={albumEntryToDisplay.id}
-                                albumEntry={albumEntryToDisplay}
-                                title={albumEntryToDisplay.title}
-                                artist={albumEntryToDisplay.artist}
-                                dateAdded={albumEntryToDisplay.dateAdded}
-                                image={albumEntryToDisplay.image}
-                                id={albumEntryToDisplay.id}
-                                rating={albumEntryToDisplay.rating}
-                                comments={albumEntryToDisplay.comments}
-                                filteredDeletedAlbum={handleDeleteAlbum}
-                                onUpdatedAlbum={onUpdatedAlbum}/>
-                        :
-                            <></>}
+                                    key={albumEntryToDisplay.id}
+                                    albumEntry={albumEntryToDisplay}
+                                    title={albumEntryToDisplay.title}
+                                    artist={albumEntryToDisplay.artist}
+                                    dateAdded={albumEntryToDisplay.dateAdded}
+                                    image={albumEntryToDisplay.image}
+                                    id={albumEntryToDisplay.id}
+                                    rating={albumEntryToDisplay.rating}
+                                    comments={albumEntryToDisplay.comments}
+                                    filteredDeletedAlbum={handleDeleteAlbum}
+                                    handleNewCommentInEntries={handleNewCommentInEntries}
+                                    onUpdatedAlbum={onUpdatedAlbum}/>
+                        </Modal>
                         </Col>
                     </Row> 
                 </div>
