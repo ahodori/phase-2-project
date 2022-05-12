@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Card } from 'react-bootstrap';
 import Comments from './Comments';
 import EditAlbum from './EditAlbum';
 
@@ -26,21 +27,23 @@ function AlbumCard({ onUpdatedAlbum, albumEntry, title, artist, dateAdded, image
     
     
     return (
-        <div>
-            <h1>{title}</h1>
-            <h2>{artist}</h2>
-            <img src={image} alt="album list item" className="feedcardimg"></img>
-            <p>Added {dateAdded}</p>
-            <p>Rating: {rating}/10</p>
+        <Card style={{ width: '18rem' }}>
+
+            <Card.Img src={image} alt="album list item" className="feedcardimg"/>
+            <Card.Title>{title}</Card.Title>
+            <Card.Subtitle>{artist}</Card.Subtitle>
+            
+            <Card.Text>Rating: {rating}/10</Card.Text>
             {comments?.map((comment) => {
                 return(<p key={comment.comment}><span>{comment.username}: </span>{comment.comment}</p>)
             })}
             <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
-            <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? <></> : "Add Comment"}</button>
+            <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? "Cancel" : "Add Comment"}</button>
             {isAddingComment ? <Comments /> : <></>}
-            <button onClick={handleEditingAlbum} className="albumcarddelete">{isEditingAlbum ? <></> : "Edit Album"}</button>
+            <button onClick={handleEditingAlbum} className="albumcarddelete">{isEditingAlbum ? "Cancel" : "Edit Album"}</button>
             {isEditingAlbum ? <EditAlbum onUpdatedAlbum={onUpdatedAlbum} albumEntry={albumEntry} title={title} artist={artist} dateAdded={dateAdded} image={image} rating={rating} comments={comments}/> : <></>}
-        </div>
+            <Card.Footer>Added {dateAdded}</Card.Footer>
+        </Card>
     )
 }
 
