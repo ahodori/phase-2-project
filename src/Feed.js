@@ -5,7 +5,7 @@ import Search from './Search'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 
-function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
+function Feed({ sortMethod, onUpdatedAlbum, handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
 //state that says alphabathical, buttons to set to alphabetical
 //one state that's the sort method
 //useeffect might sort by a particular method when that is updated.
@@ -14,7 +14,13 @@ function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDelete
 
 
 
-    const albums = albumEntries
+    const albums = albumEntries.sort((a, b) => {
+        if (sortMethod === "alphabetical") {
+            return a.artist.localeCompare(b.artist);
+        } else if (sortMethod === "rating") {
+            return b.rating - a.rating;
+        }
+     })
         .map((albumEntry) => (
             <AlbumCard 
                 key={albumEntry.id}
