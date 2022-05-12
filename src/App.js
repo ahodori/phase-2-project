@@ -79,8 +79,20 @@ function App() {
 
 
   //below function needs attention, trying to access comments key within each object of album entries array
-  const handleNewCommentInEntries = (newlyAddedComment) => {
-    setAlbumEntries.comments([...albumEntries, newlyAddedComment])
+  const handleNewCommentInEntries = (albumId, newlyAddedComment) => {
+    const referredAlbum = albumEntries.filter((album) => album.id === albumId)[0];
+    const unreferredAlbums = albumEntries.filter((album) => album.id !== albumId);
+
+    console.log(referredAlbum);
+    console.log(referredAlbum.comments);
+
+    const newComments = (referredAlbum.comments.length > 0) ? [ ...referredAlbum.comments, newlyAddedComment] : [newlyAddedComment];
+
+    const newAlbum = {
+                        ...referredAlbum,
+                        comments: newComments
+                      };
+    setAlbumEntries([...unreferredAlbums, newAlbum]);
   }
 
 
@@ -92,9 +104,9 @@ function App() {
           <AddForm handleNewAlbum={handleNewAlbum} user={user}/> 
         </Modal>
       <Routes>
-        <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries} onUpdatedAlbum={onUpdatedAlbum}/>}></Route>
+        <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries} onUpdatedAlbum={onUpdatedAlbum} handleNewCommentInEntries={handleNewCommentInEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/entries/" element={<Feed onUpdatedAlbum={onUpdatedAlbum} handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/" element={<Feed onUpdatedAlbum={onUpdatedAlbum} handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum} handleNewCommentInEntries={handleNewCommentInEntries}/>}></Route>
         <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 

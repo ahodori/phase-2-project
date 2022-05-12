@@ -6,7 +6,7 @@ import { Col, Container, Modal, Row } from "react-bootstrap";
 
 
 
-function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
+function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum, handleNewCommentInEntries}) {
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
@@ -150,6 +150,7 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
                                     rating={albumEntryToDisplay.rating}
                                     comments={albumEntryToDisplay.comments}
                                     filteredDeletedAlbum={handleDeleteAlbum}
+                                    handleNewCommentInEntries={handleNewCommentInEntries}
                                     onUpdatedAlbum={onUpdatedAlbum}/>
                         </Modal>
                         </Col>

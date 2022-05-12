@@ -39,7 +39,7 @@ function AlbumCard({ onUpdatedAlbum, albumEntry, title, artist, dateAdded, image
             })}
             <button onClick={handleDelete} className="albumcarddelete">Delete Album</button>
             <button onClick={handleAddingComment} className="albumcarddelete" >{isAddingComment ? "Cancel" : "Add Comment"}</button>
-            {isAddingComment ? <Comments /> : <></>}
+            {isAddingComment ? <Comments id={id} handleNewCommentInEntries={handleNewCommentInEntries}/> : <></>}
             <button onClick={handleEditingAlbum} className="albumcarddelete">{isEditingAlbum ? "Cancel" : "Edit Album"}</button>
             {isEditingAlbum ? <EditAlbum onUpdatedAlbum={onUpdatedAlbum} albumEntry={albumEntry} title={title} artist={artist} dateAdded={dateAdded} image={image} rating={rating} comments={comments}/> : <></>}
             <Card.Footer>Added {dateAdded}</Card.Footer>
