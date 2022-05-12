@@ -17,6 +17,7 @@ function App() {
   const [albumEntries, setAlbumEntries] = useState([]);
   const [user, setUser] = useState({});
   const [search, setSearch] = useState("");
+  const [sortMethod, setSortMethod] = useState("rating");
 
   useEffect(() => {
     fetch('http://localhost:3000/albumEntries')
@@ -64,23 +65,38 @@ function App() {
   const filteredAlbums = albumEntries.filter(albumEntry => albumEntry.artist.toLowerCase().includes(search.toLowerCase()))
 
   const handleSortAlphabeticalByArtist = () => {
-    const sortedByAlpha = [...albumEntries].sort((a,b) => {
-      return a.artist.localeCompare(b.artist)
-    })
-    setAlbumEntries(sortedByAlpha)
+    setSortMethod("alphabetical");
   } 
 
   const handleSortByRating = () => {
-    const sortedByRating = [...albumEntries].sort((a,b) => {
-      return b.rating - a.rating
-    })
-    setAlbumEntries(sortedByRating)
+    setSortMethod("rating");
   } 
 
 
   //below function needs attention, trying to access comments key within each object of album entries array
-  const handleNewCommentInEntries = (newlyAddedComment) => {
-    setAlbumEntries.comments([...albumEntries, newlyAddedComment])
+  const handleNewCommentInEntries = (albumId, newlyAddedComment) => {
+    const referredAlbum = albumEntries.filter((album) => album.id === albumId)[0];
+    const unreferredAlbums = albumEntries.filter((album) => album.id !== albumId);
+
+    const newComments = (referredAlbum.comments.length > 0) ? [ ...referredAlbum.comments, newlyAddedComment] : [newlyAddedComment];
+
+    const newAlbum = {
+                        ...referredAlbum,
+                        comments: newComments
+                      };
+
+    fetch(`http://localhost:3000/albumEntries/${albumId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbum),
+        })
+        .then(res=>res.json())
+        .then(json=>{
+          console.log(json);
+          setAlbumEntries([...unreferredAlbums, newAlbum]);
+        })
   }
 
 
@@ -92,9 +108,17 @@ function App() {
           <AddForm handleNewAlbum={handleNewAlbum} user={user}/> 
         </Modal>
       <Routes>
-        <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries} onUpdatedAlbum={onUpdatedAlbum}/>}></Route>
+        <Route path="/" element={<Calendar filteredDeletedAlbum={filteredDeletedAlbum} albumEntries={albumEntries} onUpdatedAlbum={onUpdatedAlbum} handleNewCommentInEntries={handleNewCommentInEntries}/>}></Route>
         <Route path="/profile" element={<Profile user={user} albumEntries={albumEntries} onUpdatedProfile={onUpdatedProfile}/>}></Route>
-        <Route path="/entries/" element={<Feed onUpdatedAlbum={onUpdatedAlbum} handleSortByRating={handleSortByRating} handleSearch={handleSearch} handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist} search={search} albumEntries={filteredAlbums} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
+        <Route path="/entries/" element={<Feed sortMethod={sortMethod}
+                                               onUpdatedAlbum={onUpdatedAlbum}
+                                               handleSortByRating={handleSortByRating}
+                                               handleSearch={handleSearch}
+                                               handleSortAlphabeticalByArtist={handleSortAlphabeticalByArtist}
+                                               search={search}
+                                               albumEntries={filteredAlbums}
+                                               filteredDeletedAlbum={filteredDeletedAlbum}
+                                               handleNewCommentInEntries={handleNewCommentInEntries}/>}></Route>
         <Route path="/entries/:entryId" element={<SingleCardDisplay albumEntries={albumEntries} filteredDeletedAlbum={filteredDeletedAlbum}/>}></Route>
       </Routes>
 

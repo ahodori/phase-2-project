@@ -3,8 +3,9 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 import AlbumCard from './AlbumCard'
 import Search from './Search'
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col, Stack } from 'react-bootstrap';
 
-function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
+function Feed({ sortMethod, onUpdatedAlbum, handleSortByRating, albumEntries, filteredDeletedAlbum, handleSearch, handleSortAlphabeticalByArtist, search, handleNewCommentInEntries }) {
 //state that says alphabathical, buttons to set to alphabetical
 //one state that's the sort method
 //useeffect might sort by a particular method when that is updated.
@@ -13,7 +14,13 @@ function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDelete
 
 
 
-    const albums = albumEntries
+    const albums = albumEntries.sort((a, b) => {
+        if (sortMethod === "alphabetical") {
+            return a.artist.localeCompare(b.artist);
+        } else if (sortMethod === "rating") {
+            return b.rating - a.rating;
+        }
+     })
         .map((albumEntry) => (
             <AlbumCard 
                 key={albumEntry.id}
@@ -32,7 +39,7 @@ function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDelete
     ))
 
     return (
-        <div>
+        <div >
             <div className="searchnsort">
                 <h1>Your Music</h1>
                 <Search handleSearch={handleSearch} search={search}/>
@@ -41,10 +48,12 @@ function Feed({ onUpdatedAlbum, handleSortByRating, albumEntries, filteredDelete
                     <button className="sort" onClick={handleSortByRating}>Sort by Rating</button>
                 </div>
             </div>
-            <div>
-                <ul className="albumfeedlist">
-                    {albums}
-                </ul>
+            <div >
+                <Stack gap={5} className="albumfeedlist" style={{justifyContent: "center"}}>
+                    {albums.map((album) => {
+                        return <div style={{display: "flex", justifyContent: "center"}}>{album}</div>
+                    })}
+                </Stack>
             </div>
         </div>
 
