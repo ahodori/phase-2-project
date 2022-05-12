@@ -6,6 +6,9 @@
   padding-bottom: 80px;
 }
 
+html {
+  background-color: #C0D6DF;
+}
 h1 {
   color: #4F6D7A;
 }
@@ -15,6 +18,7 @@ h1 {
   letter-spacing: 4px;
   
 }
+
 
 .mainpageh3{
   padding-top: 10px;
