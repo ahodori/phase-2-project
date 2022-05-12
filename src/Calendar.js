@@ -2,11 +2,12 @@ import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AlbumCard from "./AlbumCard";
 import { Col, Container, Row } from "react-bootstrap";
+import userEvent from "@testing-library/user-event";
 
 
 
 
-function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
+function Calendar({ user, albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
@@ -114,7 +115,10 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
 
 
 
-    return (<div className="calendar">
+    return (
+    <div>
+        <h1 className="calendarviewh1">Calendar View</h1>
+            <div className="calendar">
                 <div className="container">
                     <div className="row">
                         <div className="col">
@@ -156,8 +160,9 @@ function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
                         </Col>
                     </Row> 
                 </div>
-                
-            </div>)
+            </div>
+    </div>
+    )
 }
 
 export default Calendar;
