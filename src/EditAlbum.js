@@ -55,10 +55,12 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
             body: JSON.stringify(updatedAlbum),
         })
             .then(res => res.json())
-            .then(updatedAlbum => setEditAlbum(updatedAlbum))
+            .then(updatedAlbum => {
+                setEditAlbum(updatedAlbum);
+                onUpdatedAlbum(updatedAlbum);})
 
 
-        onUpdatedAlbum(updatedAlbum)
+        
         
         setArtist("");
         setTitle("");

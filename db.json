@@ -77,9 +77,9 @@
       "id": 5
     },
     {
-      "title": "a",
-      "artist": "b",
-      "dateAdded": "2022-05-22",
+      "title": "abca",
+      "artist": "baaa",
+      "dateAdded": "2022-05-03",
       "userAdded": "Todd",
       "image": "d",
       "rating": "c",
@@ -89,7 +89,22 @@
           "comment": "e"
         }
       ],
-      "id": 6
+      "id": 7
+    },
+    {
+      "title": "a",
+      "artist": "baaaa",
+      "dateAdded": "2022-05-20",
+      "userAdded": "Todd",
+      "image": "d",
+      "rating": "c",
+      "comments": [
+        {
+          "username": "Todd",
+          "comment": "e"
+        }
+      ],
+      "id": 8
     }
   ]
 }

@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 
 
-function Calendar({albumEntries, filteredDeletedAlbum}) {
+function Calendar({albumEntries, filteredDeletedAlbum, onUpdatedAlbum}) {
     const [displayAlbumCard, setDisplayAlbumCard] = useState(false);
     const [albumEntryToDisplay, setAlbumEntryToDisplay] = useState({});
     const [displayedMonth, setDisplayedMonth] = useState(1);
@@ -141,13 +141,16 @@ function Calendar({albumEntries, filteredDeletedAlbum}) {
                         {displayAlbumCard ?
                             <AlbumCard
                                 key={albumEntryToDisplay.id}
+                                albumEntry={albumEntryToDisplay}
                                 title={albumEntryToDisplay.title}
                                 artist={albumEntryToDisplay.artist}
                                 dateAdded={albumEntryToDisplay.dateAdded}
                                 image={albumEntryToDisplay.image}
+                                id={albumEntryToDisplay.id}
                                 rating={albumEntryToDisplay.rating}
                                 comments={albumEntryToDisplay.comments}
-                                filteredDeletedAlbum={handleDeleteAlbum}/>
+                                filteredDeletedAlbum={handleDeleteAlbum}
+                                onUpdatedAlbum={onUpdatedAlbum}/>
                         :
                             <></>}
                         </Col>
