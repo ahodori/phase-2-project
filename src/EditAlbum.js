@@ -7,7 +7,6 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
     const [date, setDate] = useState(albumEntry.dateAdded);
     const [rating, setRating] = useState(albumEntry.rating);
     const [image, setImage] = useState(albumEntry.image);
-    const [comments, setComments] = useState(albumEntry.comments.comment);
     const [editAlbum, setEditAlbum] = useState("");
 
     const id = albumEntry.id;
@@ -32,10 +31,6 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
         setRating(e.target.value)
     }
 
-    const handleComments = (e) => {
-        setComments(e.target.value)
-    }
-
     const handleAlbumEdit = (e) => {
         e.preventDefault()
        const updatedAlbum = {
@@ -44,7 +39,7 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
             dateAdded: date,
             image: image,
             rating: rating,
-            comments: comments
+            comments: albumEntry.comments
         }
 
         fetch(`http://localhost:3000/albumEntries/${id}`, {
@@ -67,7 +62,6 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
         setDate("");
         setImage("");
         setRating("");
-        setComments("");
     }
 
     return (
@@ -78,7 +72,6 @@ function EditAlbum ( { albumEntry, onUpdatedAlbum }) {
                 <label>Date Added: </label><input type="date" name="date" onChange={handleDate} value={date}></input>
                 <label>Image: </label><input type="text" name="image" onChange={handleImage} value={image}></input>
                 <label>Rating: </label><input type="text" name="rating" onChange={handleRating} value={rating}></input>
-                <label>Comments: </label><input type="text" name="comments" onChange={handleComments} value={comments}></input>
                 <button type="completededit">Completed Edits</button>
             </form>
         </div>
